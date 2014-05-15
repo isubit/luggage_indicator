@@ -6,28 +6,48 @@
 function luggage_ct_node_view_alter(&$build) {
   if(strpos($_GET['q'], 'search/', 0) !== false) {
     $build['field_content_type'] = array(
-      '#markup' => '<div class="content-type-indicator ' . $build['#bundle'] . '" title="' . ucfirst($build['#bundle']) . '">' . ucfirst(substr($build['#bundle'], 0, 2)) . '</div>',
+      '#markup' => _get_identifier_element($build['#bundle'], true),
       '#weight' => 0
     );
+    _add_stylesheet();
   } else if(strpos($_GET['q'], 'node/', 0) !== false) {
-
+    $build['field_content_type_indicator'] = array(
+      '#title' => 'Content Type Indicator',
+      '#label_display' => 'none',
+      0 => array(
+        '#markup' => _get_identifier_element($build['#bundle'], true)
+      )
+    );
+    _add_stylesheet();
   }
 }
 
 function luggage_ct_block_view_alter(&$data, $block) {
   if($block->delta == 'GiIy4zr9Gu0ZSa0bumw1Y9qIIpIDf1wu' && $data != NULL) {
     foreach($data['content']['bundle']['#items'] as &$item) {
-      $name = strtolower(get_string_between($item['data'], '>', ' ('));
+      $name = strtolower(_get_string_between($item['data'], '>', ' ('));
       if($name == 'basic page') {
         $name = 'page';
       }
-      $item['data'] = '<div class="content-type-indicator ' . $name . '">' . ucfirst(substr($name, 0, 2)) . '</div>' . $item['data'];
+      $item['data'] = _get_identifier_element($name, false) . $item['data'];
     }
-    drupal_add_css(drupal_get_path('module', 'luggage_ct') . '/css/luggage_ct.css');
+    _add_stylesheet();
   }
 }
 
-function get_string_between($string, $start, $end){
+function _add_stylesheet() {
+  drupal_add_css(drupal_get_path('module', 'luggage_ct') . '/css/luggage_ct.css');
+}
+
+function _get_identifier_element($name, $title) {
+  if($title) {
+    return '<div class="content-type-indicator ' . $name . '" title="' . ucfirst($name) . '">' . ucfirst(substr($name, 0, 2)) . '</div>';
+  } else {
+    return '<div class="content-type-indicator ' . $name . '">' . ucfirst(substr($name, 0, 2)) . '</div>';
+  }
+}
+
+function _get_string_between($string, $start, $end){
   $string = " ".$string;
   $ini = strpos($string,$start);
   if ($ini == 0) return "";

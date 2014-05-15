@@ -4,12 +4,27 @@
     margin-left: 30px;
 }
 
+.page-search article {
+    position: relative;
+}
+
+.page-node h1.title {
+    margin-left: 1em;
+}
+
 .content-type-indicator {
     width: 1.5em;
     text-align: center;
     font-weight: bold;
-    opacity: 0.5;
     border: 0.1em solid rgba(0, 0, 0, 0.2);
+}
+
+.page-search .content-type-indicator {
+    opacity: 0.5;
+}
+
+.page-node .content-type-indicator {
+    opacity: 0.7;
 }
 
 .region-content .content-type-indicator {
