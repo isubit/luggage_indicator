@@ -9,6 +9,8 @@ function luggage_ct_node_view_alter(&$build) {
       '#markup' => '<div class="content-type-indicator ' . $build['#bundle'] . '" title="' . ucfirst($build['#bundle']) . '">' . ucfirst(substr($build['#bundle'], 0, 2)) . '</div>',
       '#weight' => 0
     );
+  } else if(strpos($_GET['q'], 'node/', 0) !== false) {
+
   }
 }
 
