@@ -1,0 +1,59 @@
+/*/////////////////////////////////////*/
+.page-search .zone-content .content article .node-title,
+.page-search .zone-content .content article .content {
+    margin-left: 30px;
+}
+
+.content-type-indicator {
+    width: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    opacity: 0.5;
+    border: 0.1em solid rgba(0, 0, 0, 0.2);
+}
+
+.region-content .content-type-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0.2em 0;
+}
+
+.region-content .content-type-indicator:hover {
+    opacity: 0.8;
+    cursor: help;
+}
+
+.region-sidebar-first .content-type-indicator {
+    float: left;
+    margin-right: 0.5em;
+    opacity: 0.6;
+}
+
+.content-type-indicator.resource {
+    background: #cef;
+}
+
+.content-type-indicator.page {
+    background: #ffccf2;
+}
+
+.content-type-indicator.biblio {
+    background: #dcf;
+}
+
+.content-type-indicator.event {
+    background: #efc;
+}
+
+.content-type-indicator.people {
+    background: #fff6cc;
+}
+
+.content-type-indicator.news {
+    background: #fcc;
+}
+
+.content-type-indicator.announcement {
+    background: #ccffd4;
+}
