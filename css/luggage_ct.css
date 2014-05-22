@@ -1,4 +1,6 @@
 /*/////////////////////////////////////*/
+
+
 .page-search .zone-content .content article .node-title,
 .page-search .zone-content .content article .content {
     margin-left: 30px;
@@ -8,67 +10,68 @@
     position: relative;
 }
 
-.page-node h1.title {
-    margin-left: 1em;
-}
-
-.content-type-indicator {
+.content-type-indicator.search,
+.content-type-indicator.block {
     width: 1.5em;
     text-align: center;
     font-weight: bold;
     border: 0.1em solid rgba(0, 0, 0, 0.2);
 }
 
-.page-search .content-type-indicator {
+.content-type-indicator.search {
     opacity: 0.5;
 }
 
-.page-node .content-type-indicator {
+.content-type-indicator.node {
     opacity: 0.7;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.1em 0.25em;
 }
 
-.region-content .content-type-indicator {
+.region-content .content-type-indicator.search {
     position: absolute;
     left: 0;
     top: 0;
     padding: 0.2em 0;
 }
 
-.region-content .content-type-indicator:hover {
+.region-content .content-type-indicator.search:hover {
     opacity: 0.8;
     cursor: help;
 }
 
-.region-sidebar-first .content-type-indicator {
+.region-sidebar-first .content-type-indicator.block {
     float: left;
     margin-right: 0.5em;
     opacity: 0.6;
 }
 
-.content-type-indicator.resource {
+.content-type-indicator.ct-resource {
     background: #cef;
 }
 
-.content-type-indicator.page {
+.content-type-indicator.ct-page {
     background: #ffccf2;
 }
 
-.content-type-indicator.biblio {
+.content-type-indicator.ct-biblio {
     background: #dcf;
 }
 
-.content-type-indicator.event {
+.content-type-indicator.ct-event {
     background: #efc;
 }
 
-.content-type-indicator.people {
+.content-type-indicator.ct-people {
     background: #fff6cc;
 }
 
-.content-type-indicator.news {
+.content-type-indicator.ct-news {
     background: #fcc;
 }
 
-.content-type-indicator.announcement {
+.content-type-indicator.ct-announcement {
     background: #ccffd4;
 }
