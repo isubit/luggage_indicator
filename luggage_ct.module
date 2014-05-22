@@ -4,22 +4,22 @@
  * Drupal needs this blank file.
  */
 function luggage_ct_node_view_alter(&$build) {
-  if(arg(0), 'search/', 0) !== false) {
+  if(arg(0) == 'search') {
     $build['field_content_type'] = array(
       '#markup' => _get_identifier_element($build['#bundle'], true),
       '#weight' => 0
     );
     _add_stylesheet();
-  } else if(arg(0), 'node/', 0) !== false) {
+  } /*else if(arg(0) == 'node') {
     $build['field_content_type_indicator'] = array(
       '#title' => 'Content Type Indicator',
       '#label_display' => 'none',
-      0 => array(
+      0 => array(s
         '#markup' => _get_identifier_element($build['#bundle'], true)
       )
     );
     _add_stylesheet();
-  }
+  }*/
 }
 
 function luggage_ct_block_view_alter(&$data, $block) {
