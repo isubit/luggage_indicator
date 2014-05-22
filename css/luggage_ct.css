@@ -1,48 +1,35 @@
 /*/////////////////////////////////////*/
-
-
-.page-search .zone-content .content article .node-title,
-.page-search .zone-content .content article .content {
-    margin-left: 30px;
-}
-
 .page-search article {
     position: relative;
 }
 
+.page-search article header {
+    margin-right: 7em;
+}
+
+.page-node:not(.node-type-people) h1#page-title {
+    margin-right: 4em;
+}
+
 .content-type-indicator.search,
-.content-type-indicator.block {
-    width: 1.5em;
+.content-type-indicator.block,
+.content-type-indicator.node {
     text-align: center;
     font-weight: bold;
     border: 0.1em solid rgba(0, 0, 0, 0.2);
 }
 
-.content-type-indicator.search {
-    opacity: 0.5;
-}
-
+.content-type-indicator.search,
 .content-type-indicator.node {
-    opacity: 0.7;
+    opacity: 0.6;
     position: absolute;
-    top: 0;
     right: 0;
+    top: 0;
     padding: 0.1em 0.25em;
 }
 
-.region-content .content-type-indicator.search {
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 0.2em 0;
-}
-
-.region-content .content-type-indicator.search:hover {
-    opacity: 0.8;
-    cursor: help;
-}
-
 .region-sidebar-first .content-type-indicator.block {
+    width: 1.5em;
     float: left;
     margin-right: 0.5em;
     opacity: 0.6;

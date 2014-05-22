@@ -48,10 +48,10 @@ function _get_identifier_element($name, $type, $title) {
 
   $str = $str . '">';
 
-  if($type == 'node') {
-    $str = $str . ucfirst($name) . '</div>';
-  } else {
+  if($type == 'block') {
     $str = $str . ucfirst(substr($name, 0, 2)) . '</div>';
+  } else {
+    $str = $str . ucfirst($name) . '</div>';
   }
 
   return $str;
