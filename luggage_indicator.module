@@ -28,8 +28,11 @@ function luggage_indicator_block_view_alter(&$data, $block) {
       $name = strtolower(_get_string_between($item['data'], '>', ' ('));
       if($name == 'basic page') {
         $name = 'page';
+      } else if($name == '') {
+        $inter = explode('>', $item['data']);
+        $name = array_pop($inter);
       }
-      $item['data'] = _get_identifier_element($name, 'block', false) . $item['data'];
+      $item['data'] = _get_identifier_element(trim($name), 'block', false) . $item['data'];
     }
     _add_stylesheet();
   }
@@ -40,7 +43,9 @@ function _add_stylesheet() {
 }
 
 function _get_identifier_element($name, $type, $title) {
-  $str = '<div class="content-type-indicator ct-' . $name . ' '. $type;
+  if($name == 'biblio') $name = 'publication';
+
+  $str = '<div class="content-type-indicator ct-' . lcfirst($name) . ' '. $type;
 
   if($title) {
     $str = $str . '" title="' . ucfirst($name) . ' content type';

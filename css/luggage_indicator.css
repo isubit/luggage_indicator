@@ -43,7 +43,8 @@
     background: #ffccf2;
 }
 
-.content-type-indicator.ct-biblio {
+.content-type-indicator.ct-biblio,
+.content-type-indicator.ct-publication {
     background: #dcf;
 }
 
