@@ -29,10 +29,11 @@
 }
 
 .region-sidebar-first .content-type-indicator.block {
-    width: 1.5em;
+    width: 1.9em;
     float: left;
-    margin-right: 0.5em;
+    /*margin-right: 0.5em;*/
     opacity: 0.6;
+    margin: 0 0.5em 0 0;
 }
 
 .content-type-indicator.ct-resource {
@@ -62,4 +63,8 @@
 
 .content-type-indicator.ct-announcement {
     background: #ccffd4;
+}
+
+.content-type-indicator.ct-webform {
+    background: #99ddff;
 }
