@@ -6,7 +6,7 @@
 function luggage_indicator_node_view_alter(&$build) {
   if(arg(0) == 'search') {
     $build['field_content_type'] = array(
-      '#markup' => _get_identifier_element($build['#bundle'], 'search', true),
+      '#markup' => _get_identifier_element($build['#bundle'], 'ct-search', true),
       '#weight' => 0
     );
     _add_stylesheet();
@@ -15,7 +15,7 @@ function luggage_indicator_node_view_alter(&$build) {
       '#title' => 'Content Type Indicator',
       '#label_display' => 'none',
       0 => array(
-        '#markup' => _get_identifier_element($build['#bundle'], 'node', true)
+        '#markup' => _get_identifier_element($build['#bundle'], 'ct-node', true)
       )
     );
     _add_stylesheet();
