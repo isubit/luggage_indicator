@@ -1,6 +1,7 @@
 name = luggage_indicator
+description = indicates the content type
 core = 7.x
 package = Luggage
-version = 7.x-2.0
+version = 7.x-2.1
 project = luggage_indicator
 features[features_api][] = api:2
