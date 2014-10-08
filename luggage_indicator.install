@@ -1,0 +1,17 @@
+<?php
+/**
+ * User: hof
+ * Date: 10/8/14
+ * Time: 11:17 AM
+ */
+
+/**
+ * Implements hook_enable()
+ */
+function luggage_indicator_enable() {
+  db_update('system')
+    ->fields(array('weight' => 100000))
+    ->condition('type', 'module')
+    ->condition('name', 'luggage_indicator')
+    ->execute();
+}
