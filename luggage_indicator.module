@@ -31,30 +31,20 @@ function luggage_indicator_node_view_alter(&$build) {
   }
 }
 
-function luggage_indicator_preprocess_node(&$variables) {
-  if($variables) {
-
-  }
-}
-
-// function luggage_indicator_block_view_alter(&$data, $block) {
-//   if($block->delta == 'GiIy4zr9Gu0ZSa0bumw1Y9qIIpIDf1wu' && $data != NULL) {
-//     foreach($data['content']['bundle']['#items'] as &$item) {
-//       $name = strtolower(_get_string_between($item['data'], '>', ' ('));
-//       if($name == 'basic page') {
-//         $name = 'page';
-//       }
-//       $item['data'] = _get_identifier_element($name, 'block', false) . $item['data'];
-//     }
-//     _add_stylesheet();
-//   }
-// }
-
 function _add_stylesheet() {
   drupal_add_css(drupal_get_path('module', 'luggage_indicator') . '/css/luggage_indicator.css');
 }
 
+/**
+ * @param $name - The name of the content type
+ * @param $type - The type of the element (e.g. 'ct-node')
+ * @param $title - If a tooltip should be shown
+ * @return string - Returns a stringed html element
+ */
 function _get_identifier_element($name, $type, $title) {
+  if($name == 'Biblio') {
+    $name = 'Publication';
+  }
   $str = '<div class="content-type-indicator ct-' . $name . ' '. $type;
 
   if($title) {
@@ -70,13 +60,4 @@ function _get_identifier_element($name, $type, $title) {
   }
 
   return $str;
-}
-
-function _get_string_between($string, $start, $end){
-  $string = " ".$string;
-  $ini = strpos($string,$start);
-  if ($ini == 0) return "";
-  $ini += strlen($start);
-  $len = strpos($string,$end,$ini) - $ini;
-  return substr($string,$ini,$len);
 }
