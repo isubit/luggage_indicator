@@ -15,7 +15,7 @@ function luggage_indicator_update_projects_alter(&$projects) {
 function luggage_indicator_node_view_alter(&$build) {
   if(arg(0) == 'search') {
     $build['field_content_type'] = array(
-      '#markup' => _get_identifier_element(node_type_get_name($build['#node']), 'ct-search', true),
+      '#markup' => _luggage_indicator_get_identifier_element(node_type_get_name($build['#node']), 'ct-search', true),
       '#weight' => 0
     );
     _luggage_indicator_add_stylesheet();
@@ -24,7 +24,7 @@ function luggage_indicator_node_view_alter(&$build) {
       '#title' => 'Content Type Indicator',
       '#label_display' => 'none',
       0 => array(
-        '#markup' => _get_identifier_element(node_type_get_name($build['#node']), 'ct-node', true)
+        '#markup' => _luggage_indicator_get_identifier_element(node_type_get_name($build['#node']), 'ct-node', true)
       )
     );
     _luggage_indicator_add_stylesheet();
@@ -44,7 +44,7 @@ function luggage_indicator_preprocess_node(&$variables) {
 //       if($name == 'basic page') {
 //         $name = 'page';
 //       }
-//       $item['data'] = _get_identifier_element($name, 'block', false) . $item['data'];
+//       $item['data'] = _luggage_indicator_get_identifier_element($name, 'block', false) . $item['data'];
 //     }
 //     _luggage_indicator_add_stylesheet();
 //   }
@@ -54,7 +54,7 @@ function _luggage_indicator_add_stylesheet() {
   drupal_add_css(drupal_get_path('module', 'luggage_indicator') . '/css/luggage_indicator.css');
 }
 
-function _get_identifier_element($name, $type, $title) {
+function _luggage_indicator_get_identifier_element($name, $type, $title) {
   $str = '<div class="content-type-indicator ct-' . $name . ' '. $type;
 
   if($title) {
