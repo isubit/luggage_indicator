@@ -40,7 +40,7 @@ function luggage_indicator_preprocess_node(&$variables) {
 // function luggage_indicator_block_view_alter(&$data, $block) {
 //   if($block->delta == 'GiIy4zr9Gu0ZSa0bumw1Y9qIIpIDf1wu' && $data != NULL) {
 //     foreach($data['content']['bundle']['#items'] as &$item) {
-//       $name = strtolower(_get_string_between($item['data'], '>', ' ('));
+//       $name = strtolower(_luggage_indicator_get_string_between($item['data'], '>', ' ('));
 //       if($name == 'basic page') {
 //         $name = 'page';
 //       }
@@ -72,7 +72,7 @@ function _luggage_indicator_get_identifier_element($name, $type, $title) {
   return $str;
 }
 
-function _get_string_between($string, $start, $end){
+function _luggage_indicator_get_string_between($string, $start, $end){
   $string = " ".$string;
   $ini = strpos($string,$start);
   if ($ini == 0) return "";
