@@ -18,7 +18,7 @@ function luggage_indicator_node_view_alter(&$build) {
       '#markup' => _get_identifier_element(node_type_get_name($build['#node']), 'ct-search', true),
       '#weight' => 0
     );
-    _add_stylesheet();
+    _luggage_indicator_add_stylesheet();
   } else if(arg(0) == 'node') {
     $build['field_content_type_indicator'] = array(
       '#title' => 'Content Type Indicator',
@@ -27,7 +27,7 @@ function luggage_indicator_node_view_alter(&$build) {
         '#markup' => _get_identifier_element(node_type_get_name($build['#node']), 'ct-node', true)
       )
     );
-    _add_stylesheet();
+    _luggage_indicator_add_stylesheet();
   }
 }
 
@@ -46,11 +46,11 @@ function luggage_indicator_preprocess_node(&$variables) {
 //       }
 //       $item['data'] = _get_identifier_element($name, 'block', false) . $item['data'];
 //     }
-//     _add_stylesheet();
+//     _luggage_indicator_add_stylesheet();
 //   }
 // }
 
-function _add_stylesheet() {
+function _luggage_indicator_add_stylesheet() {
   drupal_add_css(drupal_get_path('module', 'luggage_indicator') . '/css/luggage_indicator.css');
 }
 
