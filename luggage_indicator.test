@@ -10,84 +10,84 @@
  */
 class luggageIndicatorTests extends DrupalWebTestCase {
 
-	protected $admin_user;
-	
-	public static function getInfo() {
-		return array(
-			'name' => 'Luggage Indicator Test',
-			'description' => 'Tests if the luggage indicator module displays type of page content.',
-			'group' => 'Luggage',
-		);
-	}
-	
-	/**
-	 * Adds luggage_indicator module to enviornment and sets admin_user variable.
-	 */
-	public function setUp() {
-		parent::setUp(array('luggage_indicator'));
-		$this->admin_user = $this->drupalCreateUser(array(
-			'bypass node access',
-			'administer modules',
-		));
-	}
+  protected $admin_user;
+  
+  public static function getInfo() {
+    return array(
+      'name' => 'Luggage Indicator Test',
+      'description' => 'Tests if the luggage indicator module displays type of page content.',
+      'group' => 'Luggage',
+    );
+  }
+  
+  /**
+   * Adds luggage_indicator module to enviornment and sets admin_user variable.
+   */
+  public function setUp() {
+    parent::setUp(array('luggage_indicator'));
+    $this->admin_user = $this->drupalCreateUser(array(
+      'bypass node access',
+      'administer modules',
+    ));
+  }
 
-	/**
-	 * Creates a default node and checks if text 'basic page' is displayed.
-	 */
-	public function testLuggageIndicatorOn() {
-		$this->drupalLogin($this->admin_user);
-		
-		$settings = array(
-			'type' => 'page'
-		);
-		$this->drupalCreateNode($settings);
-		$this->drupalGet('node/1');
-		debug('page with luggage indicator enabled');
-		$this->assertText('Basic page', '"Basic page" is displayed on the page');
-	}
-	
-	/**
-	 * Disables luggage_indicator and reruns previous test.
-	 */
-	public function testLuggageIndicatorOff() {
-		$this->drupalLogin($this->admin_user);
-		
-		// Goes to modules page and disables luggage_indicator.
-		$this->drupalGet('admin/modules');
-		$path = 'admin/modules';
-		$edit = array('modules[Luggage][luggage_indicator][enable]' => FALSE);
-		$submit = 'Save configuration';
-		$this->drupalPost($path,$edit,t($submit));
-		
-		$settings = array(
-			'type' => 'page'
-		);
-		$this->drupalCreateNode($settings);
-		$this->drupalGet('node/1');
-		debug('page with luggage indicator disabled');
-		$this->assertNoText('Basic page', '"Basic page" is not displayed on page');
-	}
-	
-	/**
-	 * Creates a new content type and tests if luggage_indicator displays name.
-	 */
-	public function testLuggageIndicatorNew() {
-		$this->drupalLogin($this->admin_user);
-		
-		$settings = array(
-			'type' => 'luggageIndicator',
-			'name' => $this->randomName(10)
-		);
-		$this->drupalCreateContentType($settings);
+  /**
+   * Creates a default node and checks if text 'basic page' is displayed.
+   */
+  public function testLuggageIndicatorOn() {
+    $this->drupalLogin($this->admin_user);
+    
+    $settings = array(
+      'type' => 'page'
+    );
+    $this->drupalCreateNode($settings);
+    $this->drupalGet('node/1');
+    debug('page with luggage indicator enabled');
+    $this->assertText('Basic page', '"Basic page" is displayed on the page');
+  }
+  
+  /**
+   * Disables luggage_indicator and reruns previous test.
+   */
+  public function testLuggageIndicatorOff() {
+    $this->drupalLogin($this->admin_user);
+    
+    // Goes to modules page and disables luggage_indicator.
+    $this->drupalGet('admin/modules');
+    $path = 'admin/modules';
+    $edit = array('modules[Luggage][luggage_indicator][enable]' => FALSE);
+    $submit = 'Save configuration';
+    $this->drupalPost($path,$edit,t($submit));
+    
+    $settings = array(
+      'type' => 'page'
+    );
+    $this->drupalCreateNode($settings);
+    $this->drupalGet('node/1');
+    debug('page with luggage indicator disabled');
+    $this->assertNoText('Basic page', '"Basic page" is not displayed on page');
+  }
+  
+  /**
+   * Creates a new content type and tests if luggage_indicator displays name.
+   */
+  public function testLuggageIndicatorNew() {
+    $this->drupalLogin($this->admin_user);
+    
+    $settings = array(
+      'type' => 'luggageIndicator',
+      'name' => $this->randomName(10)
+    );
+    $this->drupalCreateContentType($settings);
 
-		$nodeSettings = array(
-			'type' => 'luggageIndicator',
-		);	
-		$this->drupalCreateNode($nodeSettings);
-		
-		$this->drupalGet('node/1');
-		debug('Page with custom content type called "' . $settings['name'] . '"');
-		$message = 'class="content-type-indicator ct-' . $settings['name'] . ' ct-node"';
-		$this->assertRaw($message, 'Indicator is present');
-	}
+    $nodeSettings = array(
+      'type' => 'luggageIndicator',
+    );  
+    $this->drupalCreateNode($nodeSettings);
+    
+    $this->drupalGet('node/1');
+    debug('Page with custom content type called "' . $settings['name'] . '"');
+    $message = 'class="content-type-indicator ct-' . $settings['name'] . ' ct-node"';
+    $this->assertRaw($message, 'Indicator is present');
+  }
 }
