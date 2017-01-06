@@ -16,14 +16,14 @@ function luggage_indicator_node_view_alter(&$build) {
   if(arg(0) == 'search') {
     $build['field_content_type'] = array(
       '#markup' => _luggage_indicator_get_identifier_element(node_type_get_name($build['#node']), 'ct-search', true),
-      '#weight' => -2147483647, // Lowest unsigned 32-bit integer.
+      '#weight' => -2147483647, // Lowest signed 32-bit integer.
     );
     _luggage_indicator_add_stylesheet();
   } else if(arg(0) == 'node') {
     $build['field_content_type_indicator'] = array(
       '#title' => 'Content Type Indicator',
       '#label_display' => 'none',
-      '#weight' => -2147483647, // Lowest unsigned 32-bit integer.
+      '#weight' => -2147483647, // Lowest signed 32-bit integer.
       0 => array(
         '#markup' => _luggage_indicator_get_identifier_element(node_type_get_name($build['#node']), 'ct-node', true)
       )
