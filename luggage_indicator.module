@@ -16,13 +16,14 @@ function luggage_indicator_node_view_alter(&$build) {
   if(arg(0) == 'search') {
     $build['field_content_type'] = array(
       '#markup' => _luggage_indicator_get_identifier_element(node_type_get_name($build['#node']), 'ct-search', true),
-      '#weight' => 0
+      '#weight' => -10000,
     );
     _luggage_indicator_add_stylesheet();
   } else if(arg(0) == 'node') {
     $build['field_content_type_indicator'] = array(
       '#title' => 'Content Type Indicator',
       '#label_display' => 'none',
+      '#weight' => -10000,
       0 => array(
         '#markup' => _luggage_indicator_get_identifier_element(node_type_get_name($build['#node']), 'ct-node', true)
       )
@@ -31,24 +32,6 @@ function luggage_indicator_node_view_alter(&$build) {
   }
 }
 
-function luggage_indicator_preprocess_node(&$variables) {
-  if($variables) {
-
-  }
-}
-
-// function luggage_indicator_block_view_alter(&$data, $block) {
-//   if($block->delta == 'GiIy4zr9Gu0ZSa0bumw1Y9qIIpIDf1wu' && $data != NULL) {
-//     foreach($data['content']['bundle']['#items'] as &$item) {
-//       $name = strtolower(_luggage_indicator_get_string_between($item['data'], '>', ' ('));
-//       if($name == 'basic page') {
-//         $name = 'page';
-//       }
-//       $item['data'] = _luggage_indicator_get_identifier_element($name, 'block', false) . $item['data'];
-//     }
-//     _luggage_indicator_add_stylesheet();
-//   }
-// }
 
 function _luggage_indicator_add_stylesheet() {
   drupal_add_css(drupal_get_path('module', 'luggage_indicator') . '/css/luggage_indicator.css');
@@ -70,13 +53,4 @@ function _luggage_indicator_get_identifier_element($name, $type, $title) {
   }
 
   return $str;
-}
-
-function _luggage_indicator_get_string_between($string, $start, $end){
-  $string = " ".$string;
-  $ini = strpos($string,$start);
-  if ($ini == 0) return "";
-  $ini += strlen($start);
-  $len = strpos($string,$end,$ini) - $ini;
-  return substr($string,$ini,$len);
 }

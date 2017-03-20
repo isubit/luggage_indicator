@@ -12,23 +12,11 @@
 }
 
 .content-type-indicator.ct-search,
-.content-type-indicator.ct-block,
 .content-type-indicator.ct-node {
-    text-align: center;
-    font-weight: bold;
-}
-
-.content-type-indicator.ct-search,
-.content-type-indicator.ct-node {
-    opacity: 0.4;
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 0.1em 0.25em;
-}
-
-.content-type-indicator.ct-node {
-    font-size: large;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    color: #333;
 }
 
 .region-sidebar-first .content-type-indicator.ct-block {
